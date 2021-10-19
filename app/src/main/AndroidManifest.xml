@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ /**
+  ~  * Created by Rafsan Ahmad on 10/19/21, 1:28 PM
+  ~  * Copyright (c) 2021 . All rights reserved.
+  ~  */
+  -->
+
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.rafsan.androidworkmanagerapp">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
+        android:name=".BlurApplication"
         android:allowBackup="true"
         android:icon="@mipmap/app_icon"
         android:label="@string/app_name"
@@ -10,7 +22,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidWorkManagerApp">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.SelectImageActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,6 +30,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.BlurImageActivity" />
     </application>
 
 </manifest>

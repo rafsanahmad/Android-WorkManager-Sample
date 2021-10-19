@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ /**
+  ~  * Created by Rafsan Ahmad on 10/19/21, 1:28 PM
+  ~  * Copyright (c) 2021 . All rights reserved.
+  ~  */
+  -->
+
 <resources>
     <color name="color_primary">#018577</color>
     <color name="color_primary_dark">#00574A</color>

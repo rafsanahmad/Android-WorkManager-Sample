@@ -1,3 +1,30 @@
+<!--
+  ~ /**
+  ~  * Created by Rafsan Ahmad on 10/19/21, 1:28 PM
+  ~  * Copyright (c) 2021 . All rights reserved.
+  ~  */
+  -->
+
 <resources>
-    <string name="app_name">Android WorkManager App</string>
+    <string name="app_name">Blur Image</string>
+    <!-- Titles -->
+    <string name="blur_title">Select Blur Amount</string>
+
+    <!-- Buttons -->
+    <string name="select_image">Select Image</string>
+    <string name="go">Go</string>
+    <string name="see_file">See File</string>
+
+    <!-- Content descriptions -->
+    <string name="description_image">The image to blur and save.</string>
+
+    <!-- Blur levels -->
+    <string name="blur_lv_1">A little blurred</string>
+    <string name="blur_lv_2">More blurred</string>
+    <string name="blur_lv_3">The most blurred</string>
+    <string name="cancel_work">Cancel Work</string>
+
+    <!-- Messages -->
+    <string name="set_permissions_in_settings">Go to Settings -> Apps and Notifications ->
+        Blur Image -> App Permissions and grant access to Storage.</string>
 </resources>
