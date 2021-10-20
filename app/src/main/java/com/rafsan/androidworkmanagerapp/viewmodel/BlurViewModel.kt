@@ -15,6 +15,9 @@ import androidx.work.*
 import com.rafsan.androidworkmanagerapp.utils.IMAGE_MANIPULATION_WORK_NAME
 import com.rafsan.androidworkmanagerapp.utils.KEY_IMAGE_URI
 import com.rafsan.androidworkmanagerapp.utils.TAG_OUTPUT
+import com.rafsan.androidworkmanagerapp.workers.BlurWorker
+import com.rafsan.androidworkmanagerapp.workers.CleanupWorker
+import com.rafsan.androidworkmanagerapp.workers.SaveImageToFileWorker
 
 class BlurViewModel(application: Application) : AndroidViewModel(application) {
     internal var imageUri: Uri? = null

@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ /**
   ~  * Created by Rafsan Ahmad on 10/19/21, 1:28 PM
   ~  * Copyright (c) 2021 . All rights reserved.
@@ -83,6 +82,7 @@
 
                 <Button
                     android:id="@+id/cancel_button"
+                    style="@style/ButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/cancel_work"
