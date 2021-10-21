@@ -5,7 +5,7 @@
  *
  */
 
-package com.rafsan.androidworkmanagerapp
+package com.rafsan.androidworkmanagerapp.utils
 
 import android.content.Context
 import android.util.Log

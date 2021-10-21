@@ -13,6 +13,7 @@ import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkInfo
 import androidx.work.workDataOf
 import com.rafsan.androidworkmanagerapp.utils.KEY_IMAGE_URI
+import com.rafsan.androidworkmanagerapp.utils.WorkManagerTestRule
 import com.rafsan.androidworkmanagerapp.utils.copyFileFromTestToTargetCtx
 import com.rafsan.androidworkmanagerapp.utils.uriFileExists
 import com.rafsan.androidworkmanagerapp.workers.BlurWorker
