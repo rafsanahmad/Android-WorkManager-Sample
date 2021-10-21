@@ -15,6 +15,7 @@ import androidx.work.*
 import com.rafsan.androidworkmanagerapp.utils.IMAGE_MANIPULATION_WORK_NAME
 import com.rafsan.androidworkmanagerapp.utils.KEY_IMAGE_URI
 import com.rafsan.androidworkmanagerapp.utils.TAG_OUTPUT
+import com.rafsan.androidworkmanagerapp.utils.TAG_PROGRESS
 import com.rafsan.androidworkmanagerapp.workers.BlurWorker
 import com.rafsan.androidworkmanagerapp.workers.CleanupWorker
 import com.rafsan.androidworkmanagerapp.workers.SaveImageToFileWorker
@@ -24,11 +25,13 @@ class BlurViewModel(application: Application) : AndroidViewModel(application) {
     internal var outputUri: Uri? = null
     private val workManager = WorkManager.getInstance(application)
     internal val outputWorkInfos: LiveData<List<WorkInfo>>
+    internal val progressWorkInfoItems: LiveData<List<WorkInfo>>
 
     init {
         // This transformation makes sure that whenever the current work Id changes the WorkInfo
         // the UI is listening to changes
         outputWorkInfos = workManager.getWorkInfosByTagLiveData(TAG_OUTPUT)
+        progressWorkInfoItems = workManager.getWorkInfosByTagLiveData(TAG_PROGRESS)
     }
 
     internal fun cancelWork() {
@@ -70,13 +73,13 @@ class BlurViewModel(application: Application) : AndroidViewModel(application) {
             if (i == 0) {
                 blurBuilder.setInputData(createInputDataForUri())
             }
-
+            blurBuilder.addTag(TAG_PROGRESS)
             continuation = continuation.then(blurBuilder.build())
         }
 
         // Create charging constraint
         val constraints = Constraints.Builder()
-            .setRequiresCharging(true)
+            .setRequiresCharging(false)
             .build()
 
         // Add WorkRequest to save the image to the filesystem

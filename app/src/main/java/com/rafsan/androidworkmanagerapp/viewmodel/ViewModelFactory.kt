@@ -27,7 +27,7 @@ class ViewModelFactory(
     ): T {
         if (modelClass.isAssignableFrom(BlurViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return BlurViewModel(BlurApplication()) as T
+            return BlurApplication.instance?.let { BlurViewModel(it) } as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

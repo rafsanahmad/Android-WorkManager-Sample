@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ /**
   ~  * Created by Rafsan Ahmad on 10/19/21, 1:28 PM
   ~  * Copyright (c) 2021 . All rights reserved.
@@ -7,6 +6,7 @@
   -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.rafsan.androidworkmanagerapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -31,6 +31,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.BlurImageActivity" />
-    </application>
 
+        <provider
+            android:name="androidx.work.impl.WorkManagerInitializer"
+            android:authorities="${applicationId}.workmanager-init"
+            tools:node="remove" />
+    </application>
 </manifest>

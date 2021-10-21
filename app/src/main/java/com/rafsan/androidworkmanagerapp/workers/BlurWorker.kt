@@ -10,7 +10,9 @@ package com.rafsan.androidworkmanagerapp.workers
 import android.content.Context
 import android.graphics.BitmapFactory
 import android.net.Uri
+import android.os.Build
 import android.text.TextUtils
+import androidx.annotation.RequiresApi
 import androidx.work.Worker
 import androidx.work.WorkerParameters
 import androidx.work.workDataOf
@@ -19,13 +21,18 @@ import timber.log.Timber
 
 class BlurWorker(ctx: Context, params: WorkerParameters) : Worker(ctx, params) {
 
+    @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
     override fun doWork(): Result {
         val appContext = applicationContext
 
         val resourceUri = inputData.getString(KEY_IMAGE_URI)
 
         makeStatusNotification("Blurring image", appContext)
-        sleep()
+        // sleep()
+        (0..100 step 10).forEach {
+            setProgressAsync(workDataOf(PROGRESS to it))
+            sleep()
+        }
 
         return try {
             if (TextUtils.isEmpty(resourceUri)) {

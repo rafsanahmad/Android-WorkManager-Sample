@@ -18,6 +18,7 @@ import com.bumptech.glide.Glide
 import com.rafsan.androidworkmanagerapp.R
 import com.rafsan.androidworkmanagerapp.databinding.ActivityBlurBinding
 import com.rafsan.androidworkmanagerapp.utils.KEY_IMAGE_URI
+import com.rafsan.androidworkmanagerapp.utils.PROGRESS
 import com.rafsan.androidworkmanagerapp.viewmodel.BlurViewModel
 import com.rafsan.androidworkmanagerapp.viewmodel.ViewModelFactory
 
@@ -61,6 +62,8 @@ class BlurImageActivity : AppCompatActivity() {
         binding.cancelButton.setOnClickListener { viewModel.cancelWork() }
 
         viewModel.outputWorkInfos.observe(this, workInfosObserver())
+        // Show work progress
+        viewModel.progressWorkInfoItems.observe(this, progressObserver())
     }
 
     private fun workInfosObserver(): Observer<List<WorkInfo>> {
@@ -97,6 +100,22 @@ class BlurImageActivity : AppCompatActivity() {
         }
     }
 
+    private fun progressObserver(): Observer<List<WorkInfo>> {
+        return Observer { listOfWorkInfo ->
+            if (listOfWorkInfo.isNullOrEmpty()) {
+                return@Observer
+            }
+
+            listOfWorkInfo.forEach { workInfo ->
+                if (WorkInfo.State.RUNNING == workInfo.state) {
+                    val progress = workInfo.progress.getInt(PROGRESS, 0)
+                    binding.progressBar.progress = progress
+                }
+            }
+
+        }
+    }
+
     /**
      * Shows and hides views for when the Activity is processing an image
      */
@@ -117,6 +136,7 @@ class BlurImageActivity : AppCompatActivity() {
             progressBar.visibility = View.GONE
             cancelButton.visibility = View.GONE
             goButton.visibility = View.VISIBLE
+            progressBar.progress = 0
         }
     }
 
